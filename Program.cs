@@ -7,6 +7,9 @@ namespace Battleship
         {
             //bool isHit = false;
 
+            GamePlay ship = new GamePlay([ 9, 3]);
+
+
             int[,] numberGrid =
                {
                 { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -21,6 +24,12 @@ namespace Battleship
                 { 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 }
             };
 
+            int[,] freshGrid = new int[10, 10];
+
+
+            Console.WriteLine(ship.random);
+            Console.ReadLine();
+
             Greeting();
 
             Console.WriteLine("\nEnter guess: ");
@@ -30,8 +39,10 @@ namespace Battleship
             //Console.WriteLine(isHit.HitOrMiss());
             Console.ReadLine();
 
-            Console.WriteLine(numberGrid[0,7]);
+            Console.WriteLine(freshGrid[5, 7]);
             Console.ReadLine();
+
+            //Console.WriteLine($"The {ship.name} is colored {ship.color}, and has {ship.health} power");
         }
 
         static void Greeting()
@@ -44,9 +55,10 @@ namespace Battleship
             Console.WriteLine($"\nLet's begin {username}!");
         }
 
+
         //public static string HitOrMiss()
         //{
-        //    if (Program.isHit)
+        //    if (isHit)
         //    {
         //        Console.WriteLine("That's a hit!");
         //    }
