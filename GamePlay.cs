@@ -8,15 +8,15 @@ namespace Battleship
 {
     internal class GamePlay
     {
-        //public string color;
-        //public string name;
-        public int[,] random;
+        public string cannon;
+        public string name;
+        public int    length;
 
-        public GamePlay(int[,] aRandom)
+        public GamePlay(string aCannon, string aName, int aLength)
         {
-            //color = aColor;
-            //name = aName;
-            random = aRandom;
+            cannon = aCannon;
+            name = aName;
+            length = aLength;
 
         }
 

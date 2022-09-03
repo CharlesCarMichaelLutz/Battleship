@@ -5,10 +5,17 @@ namespace Battleship
     {
         static void Main(string[] args)
         {
-            //bool isHit = false;
+            
+            GamePlay ship = new GamePlay("ten", "USS Bergtree", 350);
+            Console.WriteLine(ship.name);
+            Console.ReadLine();
+            //Console.WriteLine($"The {ship.name} is colored {ship.color}, and has {ship.health} power");
 
-            GamePlay ship = new GamePlay([ 9, 3]);
+            GreetUser();
 
+            //generate grid
+
+            string coords;
 
             int[,] numberGrid =
                {
@@ -25,27 +32,38 @@ namespace Battleship
             };
 
             int[,] freshGrid = new int[10, 10];
+            for(int j = 0; j < freshGrid.Length; j++)
+            {    
+                coords = Convert.ToString(j);
+                Console.Write(coords);
 
-
-            Console.WriteLine(ship.random);
+            }
             Console.ReadLine();
 
-            Greeting();
+            Console.WriteLine(freshGrid[3,4]);
+            Console.ReadLine();
 
+            //generate ship
+            Random random = new Random();
+            int newShip = random.Next();
+            for(int i = 0; i < newShip; i++)
+            {
+                Console.Write(newShip);
+            }
+            Console.ReadLine();
+
+            //place ship on grid
+
+            //User input and gameplay logic
             Console.WriteLine("\nEnter guess: ");
             int guess = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine($"\nYou guessed: {guess}");
             //Console.WriteLine(isHit.HitOrMiss());
-            Console.ReadLine();
-
-            Console.WriteLine(freshGrid[5, 7]);
-            Console.ReadLine();
-
-            //Console.WriteLine($"The {ship.name} is colored {ship.color}, and has {ship.health} power");
+            Console.ReadLine();        
         }
 
-        static void Greeting()
+        static void GreetUser()
         {
             Console.WriteLine("Welcome to Battle! press Enter ");
             Console.ReadLine();
@@ -55,7 +73,7 @@ namespace Battleship
             Console.WriteLine($"\nLet's begin {username}!");
         }
 
-
+        //bool isHit = false;
         //public static string HitOrMiss()
         //{
         //    if (isHit)
