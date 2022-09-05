@@ -1,4 +1,6 @@
-﻿
+﻿using System.Data;
+
+
 namespace Battleship
 {
     class Program
@@ -6,14 +8,99 @@ namespace Battleship
         static void Main(string[] args)
         {
             
-            GamePlay ship = new GamePlay("ten", "USS Bergtree", 350);
-            Console.WriteLine(ship.name);
+            GamePlay ship = new GamePlay("ten", "fast ship", 350);
             Console.ReadLine();
-            //Console.WriteLine($"The {ship.name} is colored {ship.color}, and has {ship.health} power");
 
             GreetUser();
 
             //generate grid
+
+            DataTable gameBoard  = new DataTable("Battleship");
+                DataColumn columnA = new DataColumn("A");
+                DataColumn columnB = new DataColumn("B");
+                DataColumn columnC = new DataColumn("C");
+                DataColumn columnD = new DataColumn("D");
+                DataColumn columnE = new DataColumn("E");
+                DataColumn columnF = new DataColumn("F");
+                DataColumn columnG = new DataColumn("G");
+                DataColumn columnH = new DataColumn("H");
+                DataColumn columnI = new DataColumn("I");
+                DataColumn columnJ = new DataColumn("J");
+                    gameBoard.Columns.Add(columnA);
+                    gameBoard.Columns.Add(columnB); 
+                    gameBoard.Columns.Add(columnC);
+                    gameBoard.Columns.Add(columnD);
+                    gameBoard.Columns.Add(columnE);
+                    gameBoard.Columns.Add(columnF);
+                    gameBoard.Columns.Add(columnG);
+                    gameBoard.Columns.Add(columnH);
+                    gameBoard.Columns.Add(columnI);
+                    gameBoard.Columns.Add(columnJ);
+
+                DataRow row1 = gameBoard.NewRow();
+                DataRow row2 = gameBoard.NewRow();
+                DataRow row3 = gameBoard.NewRow();
+                DataRow row4 = gameBoard.NewRow();
+                DataRow row5 = gameBoard.NewRow();
+                DataRow row6 = gameBoard.NewRow();
+                DataRow row7 = gameBoard.NewRow();
+                DataRow row8 = gameBoard.NewRow();
+                DataRow row9 = gameBoard.NewRow();
+                DataRow row10 = gameBoard.NewRow();
+            row1["A"] = 0;  
+            row1["B"] = 0;
+            row1["C"] = 0;
+            row1["D"] = 0;
+            row1["E"] = 0;
+            row1["F"] = 0;
+            row1["G"] = 0;
+            row1["H"] = 0;
+            row1["I"] = 0;
+            row1["J"] = 0;
+
+            row5["A"] = 0;
+            row5["B"] = 0;
+            row5["C"] = 0;
+            row5["D"] = 0;
+            row5["E"] = 0;
+            row5["F"] = 0;
+            row5["G"] = 0;
+            row5["H"] = 0;
+            row5["I"] = 0;
+            row5["J"] = 0;
+
+            row10["A"] = 0;
+            row10["B"] = 0;
+            row10["C"] = 0;
+            row10["D"] = 0;
+            row10["E"] = 0;
+            row10["F"] = 0;
+            row10["G"] = 0;
+            row10["H"] = 0;
+            row10["I"] = 0;
+            row10["J"] = 0;
+
+            gameBoard.Rows.Add(row1);
+                    gameBoard.Rows.Add(row2);
+                    gameBoard.Rows.Add(row3);
+                    gameBoard.Rows.Add(row4);
+                    gameBoard.Rows.Add(row5);
+                    gameBoard.Rows.Add(row6);
+                    gameBoard.Rows.Add(row7);
+                    gameBoard.Rows.Add(row8);
+                    gameBoard.Rows.Add(row9);
+                    gameBoard.Rows.Add(row10);
+
+           for(int j = 0; j < gameBoard.Rows.Count; j++)
+            {
+                for (int i = 0; i < gameBoard.Columns.Count; i++)
+                {
+                    Console.WriteLine(gameBoard.Columns[i].ColumnName + " ");
+                    Console.WriteLine(gameBoard.Rows[j].ItemArray[i]);
+                }
+            }
+
+            Console.ReadLine();
 
             string coords;
 
