@@ -58,28 +58,6 @@ namespace Battleship
             row1["I"] = 0;
             row1["J"] = 0;
 
-            row5["A"] = 0;
-            row5["B"] = 0;
-            row5["C"] = 0;
-            row5["D"] = 0;
-            row5["E"] = 0;
-            row5["F"] = 0;
-            row5["G"] = 0;
-            row5["H"] = 0;
-            row5["I"] = 0;
-            row5["J"] = 0;
-
-            row10["A"] = 0;
-            row10["B"] = 0;
-            row10["C"] = 0;
-            row10["D"] = 0;
-            row10["E"] = 0;
-            row10["F"] = 0;
-            row10["G"] = 0;
-            row10["H"] = 0;
-            row10["I"] = 0;
-            row10["J"] = 0;
-
             gameBoard.Rows.Add(row1);
                     gameBoard.Rows.Add(row2);
                     gameBoard.Rows.Add(row3);
@@ -133,13 +111,11 @@ namespace Battleship
             //generate ship
             Random random = new Random();
             int newShip = random.Next();
-            for(int i = 0; i < newShip; i++)
-            {
-                Console.Write(newShip);
-            }
+            
             Console.ReadLine();
 
             //place ship on grid
+
 
             //User input and gameplay logic
             Console.WriteLine("\nEnter guess: ");
