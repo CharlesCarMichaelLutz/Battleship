@@ -5,82 +5,49 @@ namespace Battleship
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            
-            GamePlay ship = new GamePlay("ten", "fast ship", 350);
+            static void Main(string[] args)
+            {
+
+                public enum Square
+            {
+                Water,
+                Ship,
+                Hit,
+                Miss,
+            }
+
+            Square[,] gameBoard = new Square[10, 10];
+
+                    if(gameBoard[x, y] == Square.Ship)
+                        {
+                            gameBoard[x, y] = Square.Hit;
+                        }
+                    else if(gameBoard[x,y] != Square.Ship)
+                        {
+                            gameBoard[[x, y] = Square.Miss;
+                        }
+
+            public static Square[,] Clear(Square[,] board)
+            {
+                for (int x = 0; x < board.GetLength(0); x++)
+                {
+                    for (int y = 0; y < board.GetLength(1); y++)
+                    {
+                        board[x, y] = Square.Empty;
+                    }
+                }
+                return board;
+            }
+
+
+GamePlay ship = new GamePlay("ten", "fast ship", 350);
             Console.ReadLine();
 
             GreetUser();
 
             //generate grid
 
-            DataTable gameBoard  = new DataTable("Battleship");
-                DataColumn columnA = new DataColumn("A");
-                DataColumn columnB = new DataColumn("B");
-                DataColumn columnC = new DataColumn("C");
-                DataColumn columnD = new DataColumn("D");
-                DataColumn columnE = new DataColumn("E");
-                DataColumn columnF = new DataColumn("F");
-                DataColumn columnG = new DataColumn("G");
-                DataColumn columnH = new DataColumn("H");
-                DataColumn columnI = new DataColumn("I");
-                DataColumn columnJ = new DataColumn("J");
-                    gameBoard.Columns.Add(columnA);
-                    gameBoard.Columns.Add(columnB); 
-                    gameBoard.Columns.Add(columnC);
-                    gameBoard.Columns.Add(columnD);
-                    gameBoard.Columns.Add(columnE);
-                    gameBoard.Columns.Add(columnF);
-                    gameBoard.Columns.Add(columnG);
-                    gameBoard.Columns.Add(columnH);
-                    gameBoard.Columns.Add(columnI);
-                    gameBoard.Columns.Add(columnJ);
-
-                DataRow row1 = gameBoard.NewRow();
-                DataRow row2 = gameBoard.NewRow();
-                DataRow row3 = gameBoard.NewRow();
-                DataRow row4 = gameBoard.NewRow();
-                DataRow row5 = gameBoard.NewRow();
-                DataRow row6 = gameBoard.NewRow();
-                DataRow row7 = gameBoard.NewRow();
-                DataRow row8 = gameBoard.NewRow();
-                DataRow row9 = gameBoard.NewRow();
-                DataRow row10 = gameBoard.NewRow();
-            row1["A"] = 0;  
-            row1["B"] = 0;
-            row1["C"] = 0;
-            row1["D"] = 0;
-            row1["E"] = 0;
-            row1["F"] = 0;
-            row1["G"] = 0;
-            row1["H"] = 0;
-            row1["I"] = 0;
-            row1["J"] = 0;
-
-            gameBoard.Rows.Add(row1);
-                    gameBoard.Rows.Add(row2);
-                    gameBoard.Rows.Add(row3);
-                    gameBoard.Rows.Add(row4);
-                    gameBoard.Rows.Add(row5);
-                    gameBoard.Rows.Add(row6);
-                    gameBoard.Rows.Add(row7);
-                    gameBoard.Rows.Add(row8);
-                    gameBoard.Rows.Add(row9);
-                    gameBoard.Rows.Add(row10);
-
-           for(int j = 0; j < gameBoard.Rows.Count; j++)
-            {
-                for (int i = 0; i < gameBoard.Columns.Count; i++)
-                {
-                    Console.WriteLine(gameBoard.Columns[i].ColumnName + " ");
-                    Console.WriteLine(gameBoard.Rows[j].ItemArray[i]);
-                }
-            }
-
             Console.ReadLine();
-
-            string coords;
 
             int[,] numberGrid =
                {
@@ -96,16 +63,16 @@ namespace Battleship
                 { 91, 92, 93, 94, 95, 96, 97, 98, 99, 100 }
             };
 
-            int[,] freshGrid = new int[10, 10];
-            for(int j = 0; j < freshGrid.Length; j++)
-            {    
-                coords = Convert.ToString(j);
-                Console.Write(coords);
+            //int[,] freshGrid = new int[10, 10];
+            //for(int j = 0; j < freshGrid.Length; j++)
+            //{    
+            //    coords = Convert.ToString(j);
+            //    Console.Write(coords);
 
-            }
-            Console.ReadLine();
+            //}
+            //Console.ReadLine();
 
-            Console.WriteLine(freshGrid[3,4]);
+            //Console.WriteLine(freshGrid[3,4]);
             Console.ReadLine();
 
             //generate ship
@@ -123,7 +90,11 @@ namespace Battleship
 
             Console.WriteLine($"\nYou guessed: {guess}");
             //Console.WriteLine(isHit.HitOrMiss());
-            Console.ReadLine();        
+            Console.ReadLine();
+
+            Square[,] gameBoard = new Square[10, 10];
+            Clear(gameBoard);
+
         }
 
         static void GreetUser()
@@ -136,18 +107,21 @@ namespace Battleship
             Console.WriteLine($"\nLet's begin {username}!");
         }
 
-        //bool isHit = false;
-        //public static string HitOrMiss()
-        //{
-        //    if (isHit)
-        //    {
-        //        Console.WriteLine("That's a hit!");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("You missed");
-        //    }
-        //}
+        
+            //bool isHit = false;
+            //public static string HitOrMiss()
+            //{
+            //    if (isHit)
+            //    {
+            //        Console.WriteLine("That's a hit!");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("You missed");
+            //    }
+            //}
+
+
     }
 }
 
