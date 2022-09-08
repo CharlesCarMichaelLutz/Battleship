@@ -16,20 +16,30 @@ namespace Battleship
             //create game board
           Square[,] gameBoard = new Square[10, 10];
 
-                    if(gameBoard[3,4] == Square.Ship)
-                        {
-                            gameBoard[3, 4] = Square.Hit;
-                        }
-                    else if(gameBoard[5, 1] != Square.Ship)
-                        {
-                            gameBoard[5, 1] = Square.Miss;
-                                }
-                    else
-                    {
-                        gameBoard[5, 1] = Square.Water;
-                    }
+            //if(gameBoard[3,4] == Square.Ship)
+            //    {
+            //        gameBoard[3, 4] = Square.Hit;
+            //    }
+            //else if(gameBoard[5, 1] != Square.Ship)
+            //    {
+            //        gameBoard[5, 1] = Square.Miss;
+            //            }
+            //else
+            //{
+            //    gameBoard[5, 1] = Square.Water;
+            //}
 
-                    Console.WriteLine(gameBoard);
+                    gameBoard[0, 4] = Square.Ship;
+                    gameBoard[3, 8] = Square.Ship;
+                    gameBoard[2, 1] = Square.Ship;
+
+                    Console.WriteLine(gameBoard[0,4]);
+                    Console.WriteLine(gameBoard[3,8]);
+                    Console.WriteLine(gameBoard[2,1]);
+
+                    Console.WriteLine(gameBoard[7,6]);
+                    Console.WriteLine(gameBoard[5,3]);
+                    Console.WriteLine(gameBoard[9,7]);
                     Console.ReadLine();
 
                     //clear the game board
