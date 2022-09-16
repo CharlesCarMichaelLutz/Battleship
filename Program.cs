@@ -16,17 +16,37 @@ namespace ConsoleBattle
         public static void Main(string[] args)
         {
             Square[,] TheBoard = new Square[10, 10];
-
-            Console.WriteLine(TheBoard[4, 6]);
+            Welcome();
+            Console.WriteLine("X: 0 - 9");
+            Console.WriteLine("Y: 0 - 9");
+            Console.WriteLine("Enter your guess: X, Y");
+            //Console.WriteLine(TheBoard[4, 6]);
+            TheBoard[5, 6] = Square.Hit;
+            TheBoard[7, 5] = Square.Ship;
             while (!finished)
-            {
-                Welcome();
-
-                Console.WriteLine("X: 0 - 9");
-                Console.WriteLine("Y: 0 - 9");
-                Console.WriteLine("Enter your guess: X, Y");
+            {               
                 string guess = Console.ReadLine();
 
+                void CheckGuess(int x, int y)
+                {
+                    if (TheBoard[x, y] == Square.Ship)
+                    {
+                        TheBoard[x, y] = Square.Hit;
+                    }
+                    else if (TheBoard[x, y] == Square.Water)
+                    {
+                        TheBoard[x, y] = Square.Miss;
+                    }
+                    else if (TheBoard[x, y] == Square.Miss)
+                    {
+                        message = "you already missed here";
+                    }
+                    else
+                    {
+                        message = "this spot was hit already";
+                    }
+                }
+               
                 try
                 {
                     int xPos = Convert.ToInt32(guess.Split(',')[0]) - 1;
@@ -36,6 +56,7 @@ namespace ConsoleBattle
                     {
                         message = "You are off the board, try again!";
                     }
+                   
                     CheckGuess(xPos, yPos);
                 }
                 catch
@@ -45,6 +66,8 @@ namespace ConsoleBattle
              
                 finished = true;
             }
+            Console.WriteLine(TheBoard[5, 6]);
+            Console.WriteLine(TheBoard[7, 5]);
         }
         private static void Welcome()
         {
@@ -55,25 +78,7 @@ namespace ConsoleBattle
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine(); 
         }
-        public static void CheckGuess(int x, int y)
-        {
-            if (TheBoard[x, y] == Square.Ship)
-            {
-                TheBoard[x, y] = Square.Hit;
-            }
-            else if (TheBoard[x, y] == Square.Water)
-            {
-                TheBoard[x, y] = Square.Miss;
-            }
-            else if (TheBoard[x, y] == Square.Miss)
-            {
-                message = "you already missed here";
-            }
-            else
-            {
-                message = "this spot was hit already";
-            }
-        }
+                
     }
 }
 
