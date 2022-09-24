@@ -5,10 +5,10 @@ namespace ConsoleBattle
     {
         public static void Main(string[] args)
         {
-            GameBoard me = new GameBoard();
-            GameBoard their = new GameBoard();
-            GameBoard myGuesses = new GameBoard();
-            GameBoard theirGuesses = new GameBoard();
+            GameBoard playerA = new GameBoard();
+            GameBoard playerB = new GameBoard();
+            GameBoard playerAGuesses = new GameBoard();
+            GameBoard playerBGuesses = new GameBoard();
             bool finished = false;
             string message;
 
@@ -19,6 +19,10 @@ namespace ConsoleBattle
 
             while (!finished)
             {
+                playerA.AddShip();
+                //playerB.AddShip();
+                //AddShip(playerA);
+                //playerA.AssignShip()
                 string guess = Console.ReadLine();
                 try
                 {
@@ -30,15 +34,16 @@ namespace ConsoleBattle
                        Console.WriteLine(message = "You are off the board, try again!");
                     }
                  
-                   Console.WriteLine(me.CheckGuess(xPos,yPos));
-                    //their.CheckGuess(xPos,yPos);
+                   playerA.CheckGuess(xPos,yPos);
+                   //playerB.CheckGuess(xPos,yPos);
                 }
                 catch
                 {
                     Console.WriteLine(message = "Unable to process coordinates");
                 }
                 Console.ReadLine();
-                finished = true;
+                //finished = true;
+                Console.WriteLine(playerAGuesses);
             }
         }
         private static void Welcome()
@@ -50,15 +55,12 @@ namespace ConsoleBattle
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();
         }
-        //static void AssignShip(board)
-        //{
-        //    Clear();
-        //}
 
         //static void Bomb()
         //{
         //
         //}
+
     }
 }
 
