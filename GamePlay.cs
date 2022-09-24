@@ -82,28 +82,32 @@ namespace ConsoleBattle
             {
                 for (int i = y; i < y - 4; i--)
                 {
-                    TheBoard[x, y] = Square.Ship;
+                    TheBoard[i, y] = Square.Ship;
+                    Console.WriteLine(TheBoard[i, y]);
                 }
             }
             else if (direction == "down")
             {
                 for (int i = y; i < y + 4; i++)
                 {
-                    TheBoard[x, y] = Square.Ship;
+                    TheBoard[i, y] = Square.Ship;
+                    Console.WriteLine(TheBoard[i, y]);
                 }
             }
             else if (direction == "left")
             {
                 for (int i = x; i < x - 4; i--)
                 {
-                    TheBoard[x, y] = Square.Ship;
+                    TheBoard[x, i] = Square.Ship;
+                    Console.WriteLine(TheBoard[x, i]);
                 }
             }
             else
             {
                 for (int i = x; i < x + 4; i++)
                 {
-                    TheBoard[x, y] = Square.Ship;
+                    TheBoard[x, i] = Square.Ship;
+                    Console.WriteLine(TheBoard[x, i]);
                 }
             }
             return TheBoard;

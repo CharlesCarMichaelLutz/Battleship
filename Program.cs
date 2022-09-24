@@ -9,33 +9,33 @@ namespace ConsoleBattle
             GameBoard playerB = new GameBoard();
             GameBoard playerAGuesses = new GameBoard();
             GameBoard playerBGuesses = new GameBoard();
-            bool finished = false;
+            bool sunk = false;
             string message;
 
             Welcome();
             Console.WriteLine("X: 0 - 9");
             Console.WriteLine("Y: 0 - 9");
-            Console.WriteLine("Enter your guess: X, Y");
 
-            while (!finished)
+            while (true)
             {
-                playerA.AddShip();
+                Console.WriteLine(playerA.AddShip());
+                Console.ReadLine();
                 //playerB.AddShip();
-                //AddShip(playerA);
-                //playerA.AssignShip()
-                string guess = Console.ReadLine();
+                while(!sunk)
+                {
+
                 try
                 {
+                    Console.WriteLine("Enter your guess: X, Y");
+                    string guess = Console.ReadLine();
                     int xPos = Convert.ToInt32(guess.Split(',')[0]) - 1;
                     int yPos = Convert.ToInt32(guess.Split(',')[1]) - 1;
 
                     if (xPos > 9 || yPos > 9)
                     {
-                       Console.WriteLine(message = "You are off the board, try again!");
+                        Console.WriteLine(message = "You are off the board, try again!");
                     }
-                 
-                   playerA.CheckGuess(xPos,yPos);
-                   //playerB.CheckGuess(xPos,yPos);
+                    playerA.CheckGuess(xPos, yPos);                   
                 }
                 catch
                 {
@@ -43,8 +43,25 @@ namespace ConsoleBattle
                 }
                 Console.ReadLine();
                 //finished = true;
-                Console.WriteLine(playerAGuesses);
-            }
+                }
+
+                Console.WriteLine(message = "You sunk the ship!");
+                Console.WriteLine("Play Again? [Y or N]");
+                string answer = Console.ReadLine().ToUpper();
+
+                if (answer == "Y")
+                {
+                    continue;
+                }
+                else if (answer == "N")
+                {
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }   
         }
         private static void Welcome()
         {
