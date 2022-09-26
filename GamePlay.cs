@@ -83,7 +83,6 @@ namespace ConsoleBattle
                 for (int i = y; i < y - 4; i--)
                 {
                     TheBoard[i, y] = Square.Ship;
-                    Console.WriteLine(TheBoard[i, y]);
                 }
             }
             else if (direction == "down")
@@ -91,7 +90,6 @@ namespace ConsoleBattle
                 for (int i = y; i < y + 4; i++)
                 {
                     TheBoard[i, y] = Square.Ship;
-                    Console.WriteLine(TheBoard[i, y]);
                 }
             }
             else if (direction == "left")
@@ -99,7 +97,6 @@ namespace ConsoleBattle
                 for (int i = x; i < x - 4; i--)
                 {
                     TheBoard[x, i] = Square.Ship;
-                    Console.WriteLine(TheBoard[x, i]);
                 }
             }
             else
@@ -107,10 +104,44 @@ namespace ConsoleBattle
                 for (int i = x; i < x + 4; i++)
                 {
                     TheBoard[x, i] = Square.Ship;
-                    Console.WriteLine(TheBoard[x, i]);
                 }
             }
             return TheBoard;
         }
+        abstract class Ship
+        {
+             public string Name;
+             public int Length;
+        }
+        class Destroyer: Ship
+        {
+            
+        }
+        class Submarine : Ship
+        {
+
+        }
+        class Cruiser : Ship
+        {
+
+        }
+        class Battleship : Ship
+        {
+
+        }
+        class Carrier : Ship
+        {
+
+        }
     }
 }
+
+/*
+ 
+Carrier: 5
+Battleship: 4
+Cruiser: 3
+Submarine: 3
+Destroyer: 2
+
+ */ 
