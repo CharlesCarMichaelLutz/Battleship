@@ -41,6 +41,11 @@ namespace ConsoleBattle
             return TheBoard;
         }
 
+        /*
+         4 squares were populated as Hit on last run through
+         Figure out how game is going to end?
+         If Hit = 4......end the game
+         */
         public Square[,] AddShip()
         {
             Random random = new();
@@ -107,32 +112,7 @@ namespace ConsoleBattle
                 }
             }
             return TheBoard;
-        }
-        abstract class Ship
-        {
-             public string Name;
-             public int Length;
-        }
-        class Destroyer: Ship
-        {
-            
-        }
-        class Submarine : Ship
-        {
-
-        }
-        class Cruiser : Ship
-        {
-
-        }
-        class Battleship : Ship
-        {
-
-        }
-        class Carrier : Ship
-        {
-
-        }
+        }   
     }
 }
 
