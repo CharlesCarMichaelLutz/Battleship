@@ -11,7 +11,7 @@ namespace ConsoleBattle
             Submarine s1 = new Submarine();
             Submarine s2 = new Submarine();
 
-            Cruiser c1 = new Cruiser();
+            Cruiser playerACruiser = new Cruiser();
             Cruiser c2 = new Cruiser();
 
             Battleship b1 = new Battleship();
@@ -33,9 +33,9 @@ namespace ConsoleBattle
 
             while (true)
             {
-                Console.WriteLine(playerA.AddShip());
-                Console.ReadLine();
-                //playerB.AddShip();
+                //playerA.AddShip();
+                playerA.PlaceShip(playerACruiser, int x, int y, Orientation.Vertical);
+
                 while(!sunk)
                 {
 
@@ -117,11 +117,25 @@ namespace ConsoleBattle
             public override string Name { get => "Carrier"; }
             public override int Length { get => 5; }
         }
+        //private void MyButton_Click(object sender, EventArgs e)
+        // {
+        //     Destroyer d3 = new Destroyer();
+        //     Cruiser c3 = new Cruiser();
+        //     ShowMe(d3);
+        //     ShowMe(c3);
+        // }
+
+        //public static void ShowMe(Ship s)
+        //{
+        //    Console.WriteLine($"A {s.Name} that is {s.Length} spaces long.");
+        //}
 
         //static void Bomb()
         //{
         //
         //}
+
+
 
     }
 }

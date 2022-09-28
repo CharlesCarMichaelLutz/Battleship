@@ -112,16 +112,10 @@ namespace ConsoleBattle
                 }
             }
             return TheBoard;
-        }   
+        }
+        public Square[,] PlaceShip(Ship, int x, int y, orientation)
+        {
+
+        }
     }
 }
-
-/*
- 
-Carrier: 5
-Battleship: 4
-Cruiser: 3
-Submarine: 3
-Destroyer: 2
-
- */ 
