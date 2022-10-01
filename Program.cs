@@ -5,21 +5,6 @@ namespace ConsoleBattle
     {
         public static void Main(string[] args)
         {
-            Destroyer d1 = new Destroyer();
-            Destroyer d2 = new Destroyer();
-
-            Submarine s1 = new Submarine();
-            Submarine s2 = new Submarine();
-
-            Cruiser playerACruiser = new Cruiser();
-            Cruiser c2 = new Cruiser();
-
-            Battleship b1 = new Battleship();
-            Battleship b2 = new Battleship();
-
-            Carrier ca1 = new Carrier();
-            Carrier ca2 = new Carrier();
-
             GameBoard playerA = new GameBoard();
             GameBoard playerB = new GameBoard();
             GameBoard playerAGuesses = new GameBoard();
@@ -34,7 +19,7 @@ namespace ConsoleBattle
             while (true)
             {
                 //playerA.AddShip();
-                playerA.PlaceShip(playerACruiser, int x, int y, Orientation.Vertical);
+                playerA.PlaceShip(new Submarine(), new Point(x,y), Orientation.Vertical);
 
                 while(!sunk)
                 {
@@ -117,26 +102,28 @@ namespace ConsoleBattle
             public override string Name { get => "Carrier"; }
             public override int Length { get => 5; }
         }
-        //private void MyButton_Click(object sender, EventArgs e)
-        // {
-        //     Destroyer d3 = new Destroyer();
-        //     Cruiser c3 = new Cruiser();
-        //     ShowMe(d3);
-        //     ShowMe(c3);
-        // }
+        public Ship PlaceShip(Ship ship, Point loc, Orientation wayUp)
+        {
+            loc.x = 5;
+            loc.y = 5;
 
-        //public static void ShowMe(Ship s)
-        //{
-        //    Console.WriteLine($"A {s.Name} that is {s.Length} spaces long.");
-        //}
+            return ship;
+        }
+        struct Point
+        {
+            public int x;
+            public int y;
 
+            public Coordinate(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
         //static void Bomb()
         //{
         //
         //}
-
-
-
     }
 }
 

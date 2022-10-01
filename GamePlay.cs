@@ -113,9 +113,6 @@ namespace ConsoleBattle
             }
             return TheBoard;
         }
-        public Square[,] PlaceShip(Ship, int x, int y, orientation)
-        {
-
-        }
+       
     }
 }
