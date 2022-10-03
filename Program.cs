@@ -19,9 +19,8 @@ namespace ConsoleBattle
             while (true)
             {
                 //playerA.AddShip();
-                playerA.PlaceShip(new Submarine(), new Point(x,y), Orientation.Vertical);
-
-                while(!sunk)
+                playerA.PlaceShip(new Submarine(), new Point(), Orientation.Vertical);
+                while (!sunk)
                 {
 
                 try
@@ -72,58 +71,11 @@ namespace ConsoleBattle
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();
         }
-        public abstract class Ship
+        public class Orientation
         {
-            public abstract string Name { get; }
-            public abstract int Length { get; }
-        }
-        public class Destroyer : Ship
-        {
-            public override string Name { get => "Destroyer"; }
-            public override int Length { get => 2; }
-        }
-        public class Submarine : Ship
-        {
-            public override string Name { get => "Submarine"; }
-            public override int Length { get => 3; }
-        }
-        public class Cruiser : Ship
-        {
-            public override string Name { get => "Cruiser"; }
-            public override int Length { get => 3; }
-        }
-        public class Battleship : Ship
-        {
-            public override string Name { get => "Battleship"; }
-            public override int Length { get => 4; }
-        }
-        public class Carrier : Ship
-        {
-            public override string Name { get => "Carrier"; }
-            public override int Length { get => 5; }
-        }
-        public Ship PlaceShip(Ship ship, Point loc, Orientation wayUp)
-        {
-            loc.x = 5;
-            loc.y = 5;
-
-            return ship;
-        }
-        struct Point
-        {
-            public int x;
-            public int y;
-
-            public Coordinate(int x, int y)
-            {
-                this.x = x;
-                this.y = y;
-            }
-        }
-        //static void Bomb()
-        //{
-        //
-        //}
+            public  int[,] Vertical;
+            public  int[,] Horizontal;
+        }      
     }
 }
 
