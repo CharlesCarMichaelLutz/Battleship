@@ -114,16 +114,35 @@ namespace ConsoleBattle
         //    }
         //    return TheBoard;
         //}
-        public Ship PlaceShip(Ship ship, Point loc, Program.Orientation wayUp)
+        public Ship PlaceShip(Ship ship, Point loc, int[] wayUp)
         {
-            Console.WriteLine(ship.Length);
+            //string direction = wayUp[0];
+            //if (direction == Vertical) 
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
+            for (int i = 0; i < ship.Length; i++)
+            {
+                //TheBoard[i, ship[i]] = Square.Ship;
+
+            }
+            Console.WriteLine(wayUp);
             loc.x = 5;
             loc.y = 5;
-          Console.WriteLine($"The {ship} has an orientation {wayUp}");
+            Console.WriteLine($"The {ship.Name} has a length of {ship.Length} squares");
 
             return ship;
         }
-    }
+        public class Orientation
+        {
+            //public int[] Vertical;
+            //public int[] Horizontal;
+        }
+    }  
     public abstract class Ship
     {
         public abstract string Name { get; }
