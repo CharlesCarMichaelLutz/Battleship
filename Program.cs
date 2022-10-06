@@ -2,17 +2,7 @@
 namespace ConsoleBattle
 {
     public class Program
-    {
-        public static int[] Vertical()
-        {
-            Console.WriteLine("I am Vertical");
-            return new int[5];
-        }
-        public static int[] Horizontal()
-        {
-            Console.WriteLine("I am Horizontal");
-            return new int[5];
-        }
+    {       
         public static void Main(string[] args)
         {
             GameBoard playerA = new GameBoard();
@@ -28,9 +18,7 @@ namespace ConsoleBattle
 
             while (true)
             {
-                //playerA.AddShip();
-                playerA.PlaceShip(new Submarine(), new Point(), Vertical());
-                playerB.PlaceShip(new Carrier(), new Point(), Horizontal());
+                playerA.PlaceShip(new Submarine(), GameBoard new Point(), GameBoard Orientation.Up);
 
                 while (!sunk)
                 {
@@ -82,7 +70,8 @@ namespace ConsoleBattle
             string username = Console.ReadLine();
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();
-        }             
+        }
+   
     }
 }
 

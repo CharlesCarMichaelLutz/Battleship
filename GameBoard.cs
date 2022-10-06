@@ -41,6 +41,52 @@ namespace ConsoleBattle
             return TheBoard;
         }
 
+        public struct Point
+        {
+            private int x;
+            private int y;
+
+            public Point(int initX, int initY)
+            {
+                x = initX;
+                y = initY;
+            }
+        }
+        public enum Orientation
+        {
+            Up = 1,
+            Down = 2,
+            Left = 4,
+            Right = 8,
+        }
+        public Ship PlaceShip(Ship ship, Point loc, Orientation orient)
+        {
+            Random rand = new Random();
+
+            Point pop = new Point(rand.Next(0, 10), rand.Next(0, 10));
+
+            Orientation orient = Enum.GetValues(typeof(Orientation))
+                                .OfType<Orientation>()
+                                .ElementAt(rand.Next(0, ));
+
+            if (orient == Up)
+            {
+
+            }
+            else
+            {
+
+            }
+            for (int i = 0; i < ship.Length; i++)
+            {
+                //TheBoard[i, ship[i]] = Square.Ship;
+
+            }
+            Console.WriteLine($"The {ship.Name} has a length of {ship.Length} squares");
+
+            return ship;
+        }
+
         /*
          4 squares were populated as Hit on last run through
          Figure out how game is going to end?
@@ -113,36 +159,10 @@ namespace ConsoleBattle
         //        }
         //    }
         //    return TheBoard;
-        //}
-        public Ship PlaceShip(Ship ship, Point loc, int[] wayUp)
-        {
-            //string direction = wayUp[0];
-            //if (direction == Vertical) 
-            //{
+        //}     
+        //Ship s = PlaceShip(new Battleship, loc, orient);
 
-            //}
-            //else
-            //{
-
-            //}
-            for (int i = 0; i < ship.Length; i++)
-            {
-                //TheBoard[i, ship[i]] = Square.Ship;
-
-            }
-            Console.WriteLine(wayUp);
-            loc.x = 5;
-            loc.y = 5;
-            Console.WriteLine($"The {ship.Name} has a length of {ship.Length} squares");
-
-            return ship;
-        }
-        public class Orientation
-        {
-            //public int[] Vertical;
-            //public int[] Horizontal;
-        }
-    }  
+    }
     public abstract class Ship
     {
         public abstract string Name { get; }
@@ -172,16 +192,5 @@ namespace ConsoleBattle
     {
         public override string Name { get => "Carrier"; }
         public override int Length { get => 5; }
-    }
-    public struct Point
-    {
-        public int x;
-        public int y;
-
-        //public Coordinate(int x, int y)
-        //{
-        //    this.x = x;
-        //    this.y = y;
-        //}
     }
 }
