@@ -41,58 +41,29 @@ namespace ConsoleBattle
             return TheBoard;
         }
 
-        public struct Point
+        //Random rand = new Random();
+
+        //Point pop = new Point(rand.Next(0, 10), rand.Next(0, 10));
+
+        //Orientation orient = Enum.GetValues(typeof(Orientation))
+        //                    .OfType<Orientation>()
+        //                    .ElementAt(rand.Next(0, ));
+        public Ship PlaceShip(Ship ship, Point loc, Orientation wayUp)
         {
-            private int x;
-            private int y;
+            Console.WriteLine(ship.Name);
+            Console.WriteLine(wayUp);
+            //foreach (int point in loc)
+            //{
+            //    TheBoard[i, ship[i]] = Square.Ship;
 
-            public Point(int initX, int initY)
-            {
-                x = initX;
-                y = initY;
-            }
-        }
-        public enum Orientation
-        {
-            Up = 1,
-            Down = 2,
-            Left = 4,
-            Right = 8,
-        }
-        public Ship PlaceShip(Ship ship, Point loc, Orientation orient)
-        {
-            Random rand = new Random();
-
-            Point pop = new Point(rand.Next(0, 10), rand.Next(0, 10));
-
-            Orientation orient = Enum.GetValues(typeof(Orientation))
-                                .OfType<Orientation>()
-                                .ElementAt(rand.Next(0, ));
-
-            if (orient == Up)
-            {
-
-            }
-            else
-            {
-
-            }
-            for (int i = 0; i < ship.Length; i++)
-            {
-                //TheBoard[i, ship[i]] = Square.Ship;
-
-            }
-            Console.WriteLine($"The {ship.Name} has a length of {ship.Length} squares");
+            //}
+            Console.WriteLine(loc);
 
             return ship;
         }
 
-        /*
-         4 squares were populated as Hit on last run through
-         Figure out how game is going to end?
-         If Hit = 4......end the game
-         */
-
+        //Ship s = PlaceShip(new Battleship, loc, orient);
+     
         //public Square[,] AddShip()
         //{
         //    Random random = new();
@@ -162,6 +133,24 @@ namespace ConsoleBattle
         //}     
         //Ship s = PlaceShip(new Battleship, loc, orient);
 
+    }
+    public struct Point
+    {
+        public int x;
+        public int y;
+
+        public Point(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    public enum Orientation
+    {
+        Up = 1,
+        Down = 2,
+        Left = 4,
+        Right = 8,
     }
     public abstract class Ship
     {

@@ -18,7 +18,7 @@ namespace ConsoleBattle
 
             while (true)
             {
-                playerA.PlaceShip(new Submarine(), GameBoard new Point(), GameBoard Orientation.Up);
+                playerA.PlaceShip(new Submarine(),new Point(10,4), Orientation.Down);
 
                 while (!sunk)
                 {
