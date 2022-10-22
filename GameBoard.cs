@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace ConsoleBattle
 {
@@ -30,13 +31,13 @@ namespace ConsoleBattle
             {
                 string message1 = "you already missed here";
                 Console.WriteLine(message1);
-                TheBoard[x, y] = Square.Miss;
+                //TheBoard[x, y] = Square.Miss;
             }
             else
             {
                 string message2 = "this spot was hit already";
                 Console.WriteLine(message2);
-                TheBoard[x, y] = Square.Hit;
+                //TheBoard[x, y] = Square.Hit;
             }
             return TheBoard;
         }
@@ -51,6 +52,9 @@ namespace ConsoleBattle
         public Ship PlaceShip(Ship ship, Point loc, Orientation wayUp)
         {
             Console.WriteLine(ship.Name);
+            //loop over the ship.Length to
+            //populate the gameboard with Ship Enum
+            
             Console.WriteLine(wayUp);
             //foreach (int point in loc)
             //{
@@ -62,8 +66,6 @@ namespace ConsoleBattle
             return ship;
         }
 
-        //Ship s = PlaceShip(new Battleship, loc, orient);
-     
         //public Square[,] AddShip()
         //{
         //    Random random = new();
@@ -131,20 +133,7 @@ namespace ConsoleBattle
         //    }
         //    return TheBoard;
         //}     
-        //Ship s = PlaceShip(new Battleship, loc, orient);
-
-    }
-    public struct Point
-    {
-        public int x;
-        public int y;
-
-        public Point(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-    }
+    }  
     public enum Orientation
     {
         Up = 1,

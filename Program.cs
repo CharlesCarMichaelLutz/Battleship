@@ -1,14 +1,13 @@
-﻿
+﻿using System.Drawing;
 namespace ConsoleBattle
 {
     public class Program
-    {       
+    {
+
         public static void Main(string[] args)
         {
             GameBoard playerA = new GameBoard();
-            GameBoard playerB = new GameBoard();
             GameBoard playerAGuesses = new GameBoard();
-            GameBoard playerBGuesses = new GameBoard();
             bool sunk = false;
             string message;
 
@@ -18,7 +17,7 @@ namespace ConsoleBattle
 
             while (true)
             {
-                playerA.PlaceShip(new Submarine(),new Point(10,4), Orientation.Down);
+                playerA.PlaceShip(new Submarine(), new Point(9, 10), Orientation.Right);
 
                 while (!sunk)
                 {
@@ -70,8 +69,7 @@ namespace ConsoleBattle
             string username = Console.ReadLine();
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();
-        }
-   
+        }   
     }
 }
 
