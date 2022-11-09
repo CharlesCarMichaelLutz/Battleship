@@ -91,6 +91,7 @@ namespace ConsoleBattle
         private Square[,] TheBoard = new Square[10, 10];
         public Square[,] CheckGuess(int x, int y)
         {
+
             if (TheBoard[x, y] == Square.Ship)
             {
                 Console.WriteLine(TheBoard[x, y] = Square.Hit);
@@ -113,20 +114,43 @@ namespace ConsoleBattle
             }
             return TheBoard;
         }
-        public Ship PlaceShip(Ship ship, Point loc, Orientation wayUp)
+
+        public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
         {
-            Console.WriteLine(ship.Name);
-            //loop over the ship.Length to
-            //populate the gameboard with Ship Enum
-
-            Console.WriteLine(wayUp);
-            //foreach (int point in loc)
-            //{
-            //    TheBoard[i, ship[i]] = Square.Ship;
-
-            //}
+            loc = new Point(loc.X, loc.Y);
             Console.WriteLine(loc);
 
+            if (direction == Orientation.Up)
+            {
+                for (int i = loc.Y; i < ship.Length + 3 ; i--)
+                {
+                    TheBoard[loc.X, i] = Square.Ship;
+                }
+            }
+            else if (direction == Orientation.Down)
+            {
+                for (int i = loc.Y; i < ship.Length + 3; i++)
+                {
+                    TheBoard[loc.X, i] = Square.Ship;
+                
+                }
+            }
+            else if (direction == Orientation.Left)
+            {
+                for (int i = loc.X; i < ship.Length + 3; i--)
+                {
+                    TheBoard[i,loc.Y] = Square.Ship;
+                }
+            }
+            else
+            {
+                for (int i = loc.X; i < ship.Length + 3; i++)
+                {
+                    TheBoard[i,loc.Y] = Square.Ship;
+                }
+            }
+            Console.WriteLine(ship.Name);       
+            Console.WriteLine(direction);
             return ship;
         }  
     }
