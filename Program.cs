@@ -18,8 +18,6 @@ namespace ConsoleBattle
             bool sunk = false;
             string message;
 
-            playerA.PlaceShip(new Submarine(), loc, orient);
-
             Welcome();
             Console.WriteLine("X: 0 - 9");
             Console.WriteLine("Y: 0 - 9");
@@ -32,16 +30,18 @@ namespace ConsoleBattle
 
                 try
                 {
+                    playerA.PlaceShip(new Submarine(), loc, orient);
                     Console.WriteLine("Enter your guess: X, Y");
                     string guess = Console.ReadLine();
                     int xPos = Convert.ToInt32(guess.Split(',')[0]) - 1;
                     int yPos = Convert.ToInt32(guess.Split(',')[1]) - 1;
 
-                    if (xPos > 9 || yPos > 9)
+                    playerA.CheckGuess(xPos, yPos);
+
+                        if (xPos > 9 || yPos > 9)
                     {
                         Console.WriteLine(message = "You are off the board, try again!");
                     }
-                    playerA.CheckGuess(xPos, yPos);                   
                 }
                 catch
                 {
@@ -88,7 +88,7 @@ namespace ConsoleBattle
             Ship,
             Hit,
         }
-        private Square[,] TheBoard = new Square[10, 10];
+        public Square[,] TheBoard = new Square[10, 10];
         public Square[,] CheckGuess(int x, int y)
         {
 
@@ -117,39 +117,39 @@ namespace ConsoleBattle
 
         public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
         {
+
             loc = new Point(loc.X, loc.Y);
             Console.WriteLine(loc);
 
             if (direction == Orientation.Up)
             {
-                for (int i = loc.Y; i < ship.Length + 3 ; i--)
+                for (int i = loc.Y; i < loc.Y - 5; i--)
                 {
                     TheBoard[loc.X, i] = Square.Ship;
                 }
             }
             else if (direction == Orientation.Down)
             {
-                for (int i = loc.Y; i < ship.Length + 3; i++)
+                for (int i = loc.Y; i < loc.Y + 5; i++)
                 {
                     TheBoard[loc.X, i] = Square.Ship;
-                
                 }
             }
             else if (direction == Orientation.Left)
             {
-                for (int i = loc.X; i < ship.Length + 3; i--)
+                for (int i = loc.X; i < loc.X - 5; i--)
                 {
-                    TheBoard[i,loc.Y] = Square.Ship;
+                    TheBoard[i, loc.Y] = Square.Ship;
                 }
             }
             else
             {
-                for (int i = loc.X; i < ship.Length + 3; i++)
+                for (int i = loc.X; i < loc.X + 5; i++)
                 {
-                    TheBoard[i,loc.Y] = Square.Ship;
+                    TheBoard[i, loc.Y] = Square.Ship;
                 }
             }
-            Console.WriteLine(ship.Name);       
+            Console.WriteLine(ship.Name);
             Console.WriteLine(direction);
             return ship;
         }  
