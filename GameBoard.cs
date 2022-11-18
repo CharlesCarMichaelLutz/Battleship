@@ -5,74 +5,78 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-//namespace ConsoleBattle
-//{
-//    public Square[,] AddShip()
-//    {
-//        Random random = new();
+namespace ConsoleBattle
+{
+    public class GameBoard
+    {
+        public enum Square
+        {
+            Water,
+            Miss,
+            Ship,
+            Hit,
+        }
+        public Square[,] TheBoard = new Square[10, 10];
+        public Square[,] CheckGuess(int x, int y)
+        {
 
-//        string direction;
+            if (TheBoard[x, y] == Square.Ship)
+            {
+                Console.WriteLine(TheBoard[x, y] = Square.Hit);
+            }
+            else if (TheBoard[x, y] == Square.Water)
+            {
+                Console.WriteLine(TheBoard[x, y] = Square.Miss);
+            }
+            else if (TheBoard[x, y] == Square.Miss)
+            {
+                string message1 = "you already missed here";
+                Console.WriteLine(message1);
+            }
+            else
+            {
+                string message2 = "this spot was hit already";
+                Console.WriteLine(message2);
+            }
+            return TheBoard;
+        }
+        public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
+        {
 
-//        int x = random.Next(0, 9);
-//        int y = random.Next(0, 9);
+            loc = new Point(loc.X, loc.Y);
+            Console.WriteLine(loc);
 
-//        if (x < 4)
-//        {
-//            direction = "right";
-//        }
-//        else if (x > 4)
-//        {
-//            direction = "left";
-//        }
-//        else
-//        {
-//            direction = "left,right";
-//        }
-
-//        if (y < 4)
-//        {
-//            direction += "down";
-//        }
-//        else if (y > 4)
-//        {
-//            direction += "up";
-//        }
-//        else
-//        {
-//            direction += "up,down";
-//        }
-
-//        direction = direction.Split(',')[random.Next(0, direction.Split(',').Length)];
-
-//        if (direction == "up")
-//        {
-//            for (int i = y; i < y - 4; i--)
-//            {
-//                TheBoard[i, y] = Square.Ship;
-//            }
-//        }
-//        else if (direction == "down")
-//        {
-//            for (int i = y; i < y + 4; i++)
-//            {
-//                TheBoard[i, y] = Square.Ship;
-//            }
-//        }
-//        else if (direction == "left")
-//        {
-//            for (int i = x; i < x - 4; i--)
-//            {
-//                TheBoard[x, i] = Square.Ship;
-//            }
-//        }
-//        else
-//        {
-//            for (int i = x; i < x + 4; i++)
-//            {
-//                TheBoard[x, i] = Square.Ship;
-//            }
-//        }
-//        return TheBoard;
-//    }
-
-//}
+            if (direction == Orientation.Up)
+            {
+                for (int i = loc.Y; i < loc.Y + 5; i++)
+                {
+                    TheBoard[loc.X, i] = Square.Ship;
+                }
+            }
+            else if (direction == Orientation.Down)
+            {
+                for (int i = loc.Y; i < loc.Y + 5; i++)
+                {
+                    TheBoard[loc.X, i] = Square.Ship;
+                }
+            }
+            else if (direction == Orientation.Left)
+            {
+                for (int i = loc.X; i < loc.X + 5; i++)
+                {
+                    TheBoard[i, loc.Y] = Square.Ship;
+                }
+            }
+            else
+            {
+                for (int i = loc.X; i < loc.X + 5; i++)
+                {
+                    TheBoard[i, loc.Y] = Square.Ship;
+                }
+            }
+            Console.WriteLine(ship.Name);
+            Console.WriteLine(direction);
+            return ship;
+        }
+    }
+}

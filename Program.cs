@@ -22,6 +22,8 @@ namespace ConsoleBattle
             Console.WriteLine("X: 0 - 9");
             Console.WriteLine("Y: 0 - 9");
 
+            playerA.PlaceShip(new Submarine(), loc, orient);
+
             while (true)
             {
 
@@ -30,11 +32,10 @@ namespace ConsoleBattle
 
                 try
                 {
-                    playerA.PlaceShip(new Submarine(), loc, orient);
                     Console.WriteLine("Enter your guess: X, Y");
                     string guess = Console.ReadLine();
-                    int xPos = Convert.ToInt32(guess.Split(',')[0]) - 1;
-                    int yPos = Convert.ToInt32(guess.Split(',')[1]) - 1;
+                    int xPos = Convert.ToInt32(guess.Split(',')[0]);
+                    int yPos = Convert.ToInt32(guess.Split(',')[1]);
 
                     playerA.CheckGuess(xPos, yPos);
 
@@ -49,6 +50,7 @@ namespace ConsoleBattle
                 }
                 Console.ReadLine();
                 //finished = true;
+                
                 }
 
                 Console.WriteLine(message = "You sunk the ship!");
@@ -78,81 +80,6 @@ namespace ConsoleBattle
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();
         }
-    }
-    public class GameBoard
-    {
-        public enum Square
-        {
-            Water,
-            Miss,
-            Ship,
-            Hit,
-        }
-        public Square[,] TheBoard = new Square[10, 10];
-        public Square[,] CheckGuess(int x, int y)
-        {
-
-            if (TheBoard[x, y] == Square.Ship)
-            {
-                Console.WriteLine(TheBoard[x, y] = Square.Hit);
-            }
-            else if (TheBoard[x, y] == Square.Water)
-            {
-                Console.WriteLine(TheBoard[x, y] = Square.Miss);
-            }
-            else if (TheBoard[x, y] == Square.Miss)
-            {
-                string message1 = "you already missed here";
-                Console.WriteLine(message1);
-                //TheBoard[x, y] = Square.Miss;
-            }
-            else
-            {
-                string message2 = "this spot was hit already";
-                Console.WriteLine(message2);
-                //TheBoard[x, y] = Square.Hit;
-            }
-            return TheBoard;
-        }
-
-        public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
-        {
-
-            loc = new Point(loc.X, loc.Y);
-            Console.WriteLine(loc);
-
-            if (direction == Orientation.Up)
-            {
-                for (int i = loc.Y; i < loc.Y - 5; i--)
-                {
-                    TheBoard[loc.X, i] = Square.Ship;
-                }
-            }
-            else if (direction == Orientation.Down)
-            {
-                for (int i = loc.Y; i < loc.Y + 5; i++)
-                {
-                    TheBoard[loc.X, i] = Square.Ship;
-                }
-            }
-            else if (direction == Orientation.Left)
-            {
-                for (int i = loc.X; i < loc.X - 5; i--)
-                {
-                    TheBoard[i, loc.Y] = Square.Ship;
-                }
-            }
-            else
-            {
-                for (int i = loc.X; i < loc.X + 5; i++)
-                {
-                    TheBoard[i, loc.Y] = Square.Ship;
-                }
-            }
-            Console.WriteLine(ship.Name);
-            Console.WriteLine(direction);
-            return ship;
-        }  
     }
     public enum Orientation
     {
