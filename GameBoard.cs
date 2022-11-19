@@ -48,31 +48,71 @@ namespace ConsoleBattle
 
             if (direction == Orientation.Up)
             {
-                for (int i = loc.Y; i < loc.Y + 5; i++)
+                if(loc.Y <= 6)
                 {
-                    TheBoard[loc.X, i] = Square.Ship;
+                    for (int i = loc.Y; i < loc.Y + 5; i++)
+                    {
+                        TheBoard[loc.X, i] = Square.Ship;
+                    }
                 }
+                else
+                {
+                    for (int i = loc.Y; i > loc.Y - 5; i--)
+                    {
+                        TheBoard[loc.X, i] = Square.Ship;
+                    }
+                }               
             }
             else if (direction == Orientation.Down)
             {
-                for (int i = loc.Y; i < loc.Y + 5; i++)
+                if(loc.Y <= 6)
                 {
-                    TheBoard[loc.X, i] = Square.Ship;
+                    for (int i = loc.Y; i < loc.Y + 5; i++)
+                    {
+                        TheBoard[loc.X, i] = Square.Ship;
+                    }
                 }
+                else 
+                {
+                    for (int i = loc.Y; i > loc.Y - 5; i--)
+                    {
+                        TheBoard[loc.X, i] = Square.Ship;
+                    }
+                }                
             }
             else if (direction == Orientation.Left)
             {
-                for (int i = loc.X; i < loc.X + 5; i++)
+                if(loc.X <= 6)
                 {
-                    TheBoard[i, loc.Y] = Square.Ship;
+                    for (int i = loc.X; i < loc.X + 5; i++)
+                    {
+                        TheBoard[i, loc.Y] = Square.Ship;
+                    }
                 }
+                else
+                {
+                    for (int i = loc.X; i > loc.X - 5; i--)
+                    {
+                        TheBoard[i, loc.Y] = Square.Ship;
+                    }
+                }               
             }
             else
             {
-                for (int i = loc.X; i < loc.X + 5; i++)
+                if(loc.X <= 6)
                 {
-                    TheBoard[i, loc.Y] = Square.Ship;
+                    for (int i = loc.X; i < loc.X + 5; i++)
+                    {
+                        TheBoard[i, loc.Y] = Square.Ship;
+                    }
                 }
+                else 
+                {
+                    for (int i = loc.X; i > loc.X - 5; i--)
+                    {
+                        TheBoard[i, loc.Y] = Square.Ship;
+                    }
+                }                
             }
             Console.WriteLine(ship.Name);
             Console.WriteLine(direction);
