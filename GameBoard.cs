@@ -16,6 +16,8 @@ namespace ConsoleBattle
             Ship,
             Hit,
         }
+        private int counter = 0;
+
         public Square[,] TheBoard = new Square[10, 10];
         public Square[,] CheckGuess(int x, int y)
         {
@@ -23,6 +25,7 @@ namespace ConsoleBattle
             if (TheBoard[x, y] == Square.Ship)
             {
                 Console.WriteLine(TheBoard[x, y] = Square.Hit);
+                Program.counter++;
             }
             else if (TheBoard[x, y] == Square.Water)
             {

@@ -5,6 +5,7 @@ namespace ConsoleBattle
     {
         public static void Main(string[] args)
         {
+            int counter = 0;
             Random rand = new Random();
 
             Point loc = new Point(rand.Next(0,10), rand.Next(0,10));
@@ -32,28 +33,37 @@ namespace ConsoleBattle
 
                 try
                 {
-                    Console.WriteLine("Enter your guess: X, Y");
-                    string guess = Console.ReadLine();
-                    int xPos = Convert.ToInt32(guess.Split(',')[0]);
-                    int yPos = Convert.ToInt32(guess.Split(',')[1]);
+                Console.WriteLine("Enter your guess: X, Y");
+                string guess = Console.ReadLine();
+                int xPos = Convert.ToInt32(guess.Split(',')[0]);
+                int yPos = Convert.ToInt32(guess.Split(',')[1]);
+                
+                playerA.CheckGuess(xPos, yPos);
 
-                    playerA.CheckGuess(xPos, yPos);
+                if (counter <= 4)
+                {
+                     continue;
+                }
+                else
+                {
+                Console.WriteLine(message = "You sunk the ship!");
+                sunk = true;
+                }
 
-                        if (xPos > 9 || yPos > 9)
-                    {
-                        Console.WriteLine(message = "You are off the board, try again!");
-                    }
+                if (xPos > 9 || yPos > 9)
+                {
+                Console.WriteLine(message = "You are off the board, try again!");
+                }
+
                 }
                 catch
                 {
                     Console.WriteLine(message = "Unable to process coordinates");
                 }
-                Console.ReadLine();
-                //finished = true;
-                
+                   
+                      
                 }
 
-                Console.WriteLine(message = "You sunk the ship!");
                 Console.WriteLine("Play Again? [Y or N]");
                 string answer = Console.ReadLine().ToUpper();
 
