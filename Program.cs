@@ -5,28 +5,26 @@ namespace ConsoleBattle
     {
         public static void Main(string[] args)
         {
-            int counter = 0;
-            Random rand = new Random();
-
-            Point loc = new Point(rand.Next(0,10), rand.Next(0,10));
-
-            Orientation orient = Enum.GetValues(typeof(Orientation))
-                                .OfType<Orientation>()
-                                .ElementAt(rand.Next(0, 4));
-
-            GameBoard playerA = new GameBoard();
-            GameBoard playerAGuesses = new GameBoard();
-            bool sunk = false;
-            string message;
-
-            Welcome();
-            Console.WriteLine("X: 0 - 9");
-            Console.WriteLine("Y: 0 - 9");
-
-            playerA.PlaceShip(new Submarine(), loc, orient);
-
+       
             while (true)
             {
+                GameBoard playerA = new GameBoard();
+                GameBoard playerAGuesses = new GameBoard();
+                bool sunk = false;
+                string message;
+
+                Welcome();
+                Console.WriteLine("X: 0 - 9");
+                Console.WriteLine("Y: 0 - 9");
+
+                Random rand = new Random();
+                Point loc = new Point(rand.Next(0, 10), rand.Next(0, 10));
+
+                Orientation orient = Enum.GetValues(typeof(Orientation))
+                                    .OfType<Orientation>()
+                                    .ElementAt(rand.Next(0, 4));
+               
+                playerA.PlaceShip(new Carrier(), loc, orient);
 
                 while (!sunk)
                 {
@@ -35,12 +33,14 @@ namespace ConsoleBattle
                 {
                 Console.WriteLine("Enter your guess: X, Y");
                 string guess = Console.ReadLine();
+                
+                
                 int xPos = Convert.ToInt32(guess.Split(',')[0]);
                 int yPos = Convert.ToInt32(guess.Split(',')[1]);
                 
                 playerA.CheckGuess(xPos, yPos);
 
-                if (counter <= 4)
+                if (playerA.counter <= 4)
                 {
                      continue;
                 }
@@ -66,7 +66,8 @@ namespace ConsoleBattle
 
                 Console.WriteLine("Play Again? [Y or N]");
                 string answer = Console.ReadLine().ToUpper();
-
+                GameBoard.ClearBoard(playerA.TheBoard);
+                
                 if (answer == "Y")
                 {
                     continue;
@@ -80,6 +81,7 @@ namespace ConsoleBattle
                     return;
                 }
             }   
+        
         }
         private static void Welcome()
         {

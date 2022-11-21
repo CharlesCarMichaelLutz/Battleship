@@ -16,7 +16,7 @@ namespace ConsoleBattle
             Ship,
             Hit,
         }
-        private int counter = 0;
+        public int counter = 0;
 
         public Square[,] TheBoard = new Square[10, 10];
         public Square[,] CheckGuess(int x, int y)
@@ -25,7 +25,7 @@ namespace ConsoleBattle
             if (TheBoard[x, y] == Square.Ship)
             {
                 Console.WriteLine(TheBoard[x, y] = Square.Hit);
-                Program.counter++;
+                counter++;
             }
             else if (TheBoard[x, y] == Square.Water)
             {
@@ -40,6 +40,17 @@ namespace ConsoleBattle
             {
                 string message2 = "this spot was hit already";
                 Console.WriteLine(message2);
+            }
+            return TheBoard;
+        }
+        public static Square[,] ClearBoard(Square[,] TheBoard)
+        {
+            for (int x = 0; x < TheBoard.GetLength(0); x++)
+            {
+                for (int y = 0; y < TheBoard.GetLength(1); y++)
+                {
+                    TheBoard[x, y] = Square.Water;
+                }
             }
             return TheBoard;
         }
@@ -117,6 +128,7 @@ namespace ConsoleBattle
                     }
                 }                
             }
+
             Console.WriteLine(ship.Name);
             Console.WriteLine(direction);
             return ship;
