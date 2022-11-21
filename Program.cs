@@ -8,8 +8,8 @@ namespace ConsoleBattle
        
             while (true)
             {
-                GameBoard playerA = new GameBoard();
-                GameBoard playerAGuesses = new GameBoard();
+                GameBoard player = new GameBoard();
+                GameBoard playerGuesses = new GameBoard();
                 bool sunk = false;
                 string message;
 
@@ -24,49 +24,50 @@ namespace ConsoleBattle
                                     .OfType<Orientation>()
                                     .ElementAt(rand.Next(0, 4));
                
-                playerA.PlaceShip(new Carrier(), loc, orient);
+                player.PlaceShip(new Carrier(), loc, orient);
 
-                while (!sunk)
-                {
-
+            while (!sunk)
+            { 
                 try
                 {
                 Console.WriteLine("Enter your guess: X, Y");
-                string guess = Console.ReadLine();
-                
-                
+                string guess = Console.ReadLine();                               
                 int xPos = Convert.ToInt32(guess.Split(',')[0]);
                 int yPos = Convert.ToInt32(guess.Split(',')[1]);
-                
-                playerA.CheckGuess(xPos, yPos);
-
-                if (playerA.counter <= 4)
-                {
-                     continue;
-                }
-                else
-                {
-                Console.WriteLine(message = "You sunk the ship!");
-                sunk = true;
-                }
 
                 if (xPos > 9 || yPos > 9)
                 {
                 Console.WriteLine(message = "You are off the board, try again!");
                 }
 
+                player.CheckGuess(xPos, yPos);
+
+                if (player.hitCounter <= 4 && player.guessCount <= 14)
+                {
+                     continue;
+                }
+                else if(player.guessCount >= 15)
+                {
+                Console.WriteLine(message = "You ran out of guesses!");
+                sunk = true;
+                }
+                else
+                {
+                Console.WriteLine(message = "You sunk the ship!");
+                sunk = true;
+                }
+                       
                 }
                 catch
                 {
                     Console.WriteLine(message = "Unable to process coordinates");
                 }
-                   
-                      
-                }
 
-                Console.WriteLine("Play Again? [Y or N]");
+            }
+
+                Console.WriteLine("Want to play again? [Y or N]");
                 string answer = Console.ReadLine().ToUpper();
-                GameBoard.ClearBoard(playerA.TheBoard);
+                GameBoard.ClearBoard(player.TheBoard);
                 
                 if (answer == "Y")
                 {
