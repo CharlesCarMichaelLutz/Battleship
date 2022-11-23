@@ -30,42 +30,42 @@ namespace ConsoleBattle
             { 
                 try
                 {
-                Console.WriteLine("Enter your guess: X, Y");
+                Console.WriteLine("\nEnter your guess: X, Y");
                 string guess = Console.ReadLine();                               
                 int xPos = Convert.ToInt32(guess.Split(',')[0]);
                 int yPos = Convert.ToInt32(guess.Split(',')[1]);
 
                 if (xPos > 9 || yPos > 9)
                 {
-                Console.WriteLine(message = "You are off the board, try again!");
+                Console.WriteLine(message = "\nYou are off the board, try again!");
                 }
 
                 player.CheckGuess(xPos, yPos);
+                GameBoard.DisplayBoard(player.TheBoard);
 
-                if (player.hitCounter <= 4 && player.guessCount <= 14)
+                        if (player.hitCounter <= 4 && player.guessCount <= 14)
                 {
                      continue;
                 }
                 else if(player.guessCount >= 15)
                 {
-                Console.WriteLine(message = "You ran out of guesses!");
+                Console.WriteLine(message = "\nYou ran out of guesses!");
                 sunk = true;
                 }
                 else
                 {
-                Console.WriteLine(message = "You sunk the ship!");
+                Console.WriteLine(message = "\nYou sunk the ship!");
                 sunk = true;
                 }
-                       
                 }
                 catch
                 {
-                    Console.WriteLine(message = "Unable to process coordinates");
+                    Console.WriteLine(message = "\nUnable to process coordinates");
                 }
 
             }
 
-                Console.WriteLine("Want to play again? [Y or N]");
+                Console.WriteLine("\nWant to play again? [Y or N]");
                 string answer = Console.ReadLine().ToUpper();
                 GameBoard.ClearBoard(player.TheBoard);
                 
@@ -88,7 +88,7 @@ namespace ConsoleBattle
         {
             Console.WriteLine("Welcome to Console Battle!");
             //Console.ReadLine();
-            Console.WriteLine("Enter username: ");
+            Console.WriteLine("\nEnter username: ");
             string username = Console.ReadLine();
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();

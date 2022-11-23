@@ -34,15 +34,28 @@ namespace ConsoleBattle
             }
             else if (TheBoard[x, y] == Square.Miss)
             {
-                string message1 = "you already missed here";
+                string message1 = "\nyou already missed here";
                 Console.WriteLine(message1);
             }
             else
             {
-                string message2 = "this spot was hit already";
+                string message2 = "\nthis spot was hit already";
                 Console.WriteLine(message2);
             }
             guessCount++;
+            return TheBoard;
+        }
+
+        public static Square[,] DisplayBoard(Square[,] TheBoard)
+        {
+            for (int x = 0; x < TheBoard.GetLength(0); x++)
+            {
+                for (int y = 0; y < TheBoard.GetLength(1); y++)
+                {
+                    Console.Write(TheBoard[x, y] + "\t");
+                }
+                Console.WriteLine();
+            }
             return TheBoard;
         }
         public static Square[,] ClearBoard(Square[,] TheBoard)
@@ -59,11 +72,11 @@ namespace ConsoleBattle
         public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
         {
             loc = new Point(loc.X, loc.Y);
-            Console.WriteLine(loc);
+            //Console.WriteLine(loc);
 
             if (direction == Orientation.Up)
             {
-                if(loc.Y <= 6)
+                if(loc.Y <= 4)
                 {
                     for (int i = loc.Y; i < loc.Y + 5; i++)
                     {
@@ -80,7 +93,7 @@ namespace ConsoleBattle
             }
             else if (direction == Orientation.Down)
             {
-                if(loc.Y <= 6)
+                if(loc.Y <= 4)
                 {
                     for (int i = loc.Y; i < loc.Y + 5; i++)
                     {
@@ -97,7 +110,7 @@ namespace ConsoleBattle
             }
             else if (direction == Orientation.Left)
             {
-                if(loc.X <= 6)
+                if(loc.X <= 4)
                 {
                     for (int i = loc.X; i < loc.X + 5; i++)
                     {
@@ -114,7 +127,7 @@ namespace ConsoleBattle
             }
             else
             {
-                if(loc.X <= 6)
+                if(loc.X <= 4)
                 {
                     for (int i = loc.X; i < loc.X + 5; i++)
                     {
@@ -129,8 +142,8 @@ namespace ConsoleBattle
                     }
                 }                
             }
-            Console.WriteLine(ship.Name);
-            Console.WriteLine(direction);
+            //Console.WriteLine(ship.Name);
+            //Console.WriteLine(direction);
             return ship;
         }
     }
