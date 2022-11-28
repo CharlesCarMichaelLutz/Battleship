@@ -5,7 +5,7 @@ namespace ConsoleBattle
     {
         public static void Main(string[] args)
         {
-       
+
             while (true)
             {
                 GameBoard player = new GameBoard();
@@ -41,9 +41,11 @@ namespace ConsoleBattle
                 }
 
                 player.CheckGuess(xPos, yPos);
-                GameBoard.DisplayBoard(player.TheBoard);
+                //playerGuesses.displayPlayerGuesses(xPos, yPos);
 
-                        if (player.hitCounter <= 4 && player.guessCount <= 14)
+                //GameBoard.DisplayBoard(playerGuesses.TheBoard);
+
+                if (player.hitCounter <= 4 && player.guessCount <= 14)
                 {
                      continue;
                 }
@@ -94,6 +96,7 @@ namespace ConsoleBattle
             Console.ReadLine();
         }
     }
+
     public enum Orientation
     {
         Up = 1,
@@ -134,3 +137,22 @@ namespace ConsoleBattle
 }
 
 
+/*
+
+foreach loop
+<List> datastructure
+Each time player.checkGuess gets called
+add each value to a list and display it to
+the player 
+
+
+clone player board
+copy and display player guesses
+come up with a way to only display hits and misses
+and hide the ship from the user
+
+you missed at: player.whoknows
+
+add to a list
+
+ */

@@ -22,7 +22,6 @@ namespace ConsoleBattle
         public Square[,] TheBoard = new Square[10, 10];
         public Square[,] CheckGuess(int x, int y)
         {
-
             if (TheBoard[x, y] == Square.Ship)
             {
                 Console.WriteLine(TheBoard[x, y] = Square.Hit);
@@ -46,13 +45,25 @@ namespace ConsoleBattle
             return TheBoard;
         }
 
+        //public Square[,] displayPlayerGuesses(int x, int y)
+        //{
+        //    if (TheBoard[x, y] == Square.Hit)
+        //    {
+        //        TheBoard[x, y] = Square.Hit;
+        //    }
+        //    else
+        //    {
+        //        TheBoard[x, y] = Square.Miss;
+        //    }
+        //    return TheBoard;
+        //}
         public static Square[,] DisplayBoard(Square[,] TheBoard)
         {
             for (int x = 0; x < TheBoard.GetLength(0); x++)
             {
                 for (int y = 0; y < TheBoard.GetLength(1); y++)
                 {
-                    Console.Write(TheBoard[x, y] + "\t");
+                    Console.Write(TheBoard[x,y] + "\t");
                 }
                 Console.WriteLine();
             }
@@ -72,7 +83,6 @@ namespace ConsoleBattle
         public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
         {
             loc = new Point(loc.X, loc.Y);
-            //Console.WriteLine(loc);
 
             if (direction == Orientation.Up)
             {
@@ -142,8 +152,6 @@ namespace ConsoleBattle
                     }
                 }                
             }
-            //Console.WriteLine(ship.Name);
-            //Console.WriteLine(direction);
             return ship;
         }
     }
