@@ -7,7 +7,7 @@ An initial dive into developing an application completely in the console with C#
 
 
 ---
-![consoleBattle]()
+![console battle example](https://user-images.githubusercontent.com/103493003/226859146-dc5401dc-c90a-4a72-aa3c-b26d44e40ede.JPG)
 
 
 
