@@ -5,7 +5,6 @@ namespace ConsoleBattle
     {
         public static void Main(string[] args)
         {
-
             while (true)
             {
                 GameBoard player = new GameBoard();
@@ -27,44 +26,40 @@ namespace ConsoleBattle
                 player.PlaceShip(new Carrier(), loc, orient);
 
             while (!sunk)
-            { 
-                try
-                {
-                Console.WriteLine("\nEnter your guess: X, Y");
-                string guess = Console.ReadLine();                               
-                int xPos = Convert.ToInt32(guess.Split(',')[0]);
-                int yPos = Convert.ToInt32(guess.Split(',')[1]);
+            {
+                    try
+                    {
+                        Console.WriteLine("\nEnter your guess: X, Y");
+                        string guess = Console.ReadLine();
+                        int xPos = Convert.ToInt32(guess.Split(',')[0]);
+                        int yPos = Convert.ToInt32(guess.Split(',')[1]);
 
-                if (xPos > 9 || yPos > 9)
-                {
-                Console.WriteLine(message = "\nYou are off the board, try again!");
-                }
+                        if (xPos > 9 || yPos > 9)
+                        {
+                            Console.WriteLine(message = "\nYou are off the board, try again!");
+                        }
 
-                player.CheckGuess(xPos, yPos);
-                //playerGuesses.displayPlayerGuesses(xPos, yPos);
+                        player.CheckGuess(xPos, yPos);
 
-                //GameBoard.DisplayBoard(playerGuesses.TheBoard);
-
-                if (player.hitCounter <= 4 && player.guessCount <= 14)
-                {
-                     continue;
-                }
-                else if(player.guessCount >= 15)
-                {
-                Console.WriteLine(message = "\nYou ran out of guesses!");
-                sunk = true;
-                }
-                else
-                {
-                Console.WriteLine(message = "\nYou sunk the ship!");
-                sunk = true;
-                }
-                }
-                catch
-                {
-                    Console.WriteLine(message = "\nUnable to process coordinates");
-                }
-
+                        if (player.hitCounter < 5 && player.guessCount <= 14)
+                        {
+                            continue;
+                        }
+                        else if (player.guessCount > 14 && player.hitCounter < 5)
+                        {
+                            Console.WriteLine(message = "\nYou ran out of guesses!");
+                            sunk = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine(message = "\nYou sunk the ship!");
+                            sunk = true;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine(message = "\nUnable to process coordinates");
+                    }
             }
 
                 Console.WriteLine("\nWant to play again? [Y or N]");
@@ -96,7 +91,6 @@ namespace ConsoleBattle
             Console.ReadLine();
         }
     }
-
     public enum Orientation
     {
         Up = 1,
@@ -109,50 +103,9 @@ namespace ConsoleBattle
         public abstract string Name { get; }
         public abstract int Length { get; }
     }
-    public class Destroyer : Ship
-    {
-        public override string Name { get => "Destroyer"; }
-        public override int Length { get => 2; }
-    }
-    public class Submarine : Ship
-    {
-        public override string Name { get => "Submarine"; }
-        public override int Length { get => 3; }
-    }
-    public class Cruiser : Ship
-    {
-        public override string Name { get => "Cruiser"; }
-        public override int Length { get => 3; }
-    }
-    public class Battleship : Ship
-    {
-        public override string Name { get => "Battleship"; }
-        public override int Length { get => 4; }
-    }
     public class Carrier : Ship
     {
         public override string Name { get => "Carrier"; }
         public override int Length { get => 5; }
     }
 }
-
-
-/*
-
-foreach loop
-<List> datastructure
-Each time player.checkGuess gets called
-add each value to a list and display it to
-the player 
-
-
-clone player board
-copy and display player guesses
-come up with a way to only display hits and misses
-and hide the ship from the user
-
-you missed at: player.whoknows
-
-add to a list
-
- */

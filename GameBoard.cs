@@ -57,18 +57,18 @@ namespace ConsoleBattle
         //    }
         //    return TheBoard;
         //}
-        public static Square[,] DisplayBoard(Square[,] TheBoard)
-        {
-            for (int x = 0; x < TheBoard.GetLength(0); x++)
-            {
-                for (int y = 0; y < TheBoard.GetLength(1); y++)
-                {
-                    Console.Write(TheBoard[x,y] + "\t");
-                }
-                Console.WriteLine();
-            }
-            return TheBoard;
-        }
+        //public static Square[,] DisplayBoard(Square[,] TheBoard)
+        //{
+        //    for (int x = 0; x < TheBoard.GetLength(0); x++)
+        //    {
+        //        for (int y = 0; y < TheBoard.GetLength(1); y++)
+        //        {
+        //            Console.Write(TheBoard[x,y] + "\t");
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //    return TheBoard;
+        //}
         public static Square[,] ClearBoard(Square[,] TheBoard)
         {
             for (int x = 0; x < TheBoard.GetLength(0); x++)
