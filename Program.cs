@@ -7,8 +7,7 @@ namespace ConsoleBattle
         {
             while (true)
             {
-                GameBoard player = new GameBoard();
-                GameBoard playerGuesses = new GameBoard();
+                GameBoard player = new();
                 bool sunk = false;
                 string message;
 
@@ -16,8 +15,8 @@ namespace ConsoleBattle
                 Console.WriteLine("X: 0 - 9");
                 Console.WriteLine("Y: 0 - 9");
 
-                Random rand = new Random();
-                Point loc = new Point(rand.Next(0, 10), rand.Next(0, 10));
+                Random rand = new();
+                Point loc = new(rand.Next(0, 10), rand.Next(0, 10));
 
                 Orientation orient = Enum.GetValues(typeof(Orientation))
                                     .OfType<Orientation>()
@@ -84,7 +83,6 @@ namespace ConsoleBattle
         private static void Welcome()
         {
             Console.WriteLine("Welcome to Console Battle!");
-            //Console.ReadLine();
             Console.WriteLine("\nEnter username: ");
             string username = Console.ReadLine();
             Console.WriteLine($"\nLet's begin {username} press Enter!");
