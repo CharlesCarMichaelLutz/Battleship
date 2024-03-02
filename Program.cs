@@ -24,7 +24,8 @@ namespace ConsoleBattle
 
                 Ship shipToAdd = new Carrier();   
                 player.PlaceShip(shipToAdd, loc, orient);
-                hitsToWin += shipToAdd.Length;
+                
+                hitsToWin = shipToAdd.Length;
 
                 while (!player.GameIsOver(hitsToWin))
                 {
