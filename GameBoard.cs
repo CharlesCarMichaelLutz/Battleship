@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
+
+using static ConsoleBattle.Program;
 
 namespace ConsoleBattle
 {
@@ -16,60 +13,60 @@ namespace ConsoleBattle
             Ship,
             Hit,
         }
+
+        private static readonly Dictionary<Square, string> mapSymbols = new()
+        {
+            { Square.Water, "~" },
+            { Square.Miss, "O" },
+            { Square.Ship, "~" },
+            { Square.Hit, "$" }
+        };
+
         public int hitCounter = 0;
+
         public int guessCount = 0;
 
         public Square[,] TheBoard = new Square[10, 10];
-        public Square[,] CheckGuess(int x, int y)
+        public Square[,] CheckGuess(Point point)
         {
-            if (TheBoard[x, y] == Square.Ship)
+            string message = "";
+            switch(TheBoard[point.Y, point.X])
             {
-                Console.WriteLine(TheBoard[x, y] = Square.Hit);
-                hitCounter++;
-            }
-            else if (TheBoard[x, y] == Square.Water)
-            {
-                Console.WriteLine(TheBoard[x, y] = Square.Miss);
-            }
-            else if (TheBoard[x, y] == Square.Miss)
-            {
-                string message1 = "\nyou already missed here";
-                Console.WriteLine(message1);
-            }
-            else
-            {
-                string message2 = "\nthis spot was hit already";
-                Console.WriteLine(message2);
+                case Square.Ship:
+                    TheBoard[point.Y, point.X] = Square.Hit;
+                    hitCounter++;
+                    message = "HIT!!!";
+                    break;
+                case Square.Water:
+                    TheBoard[point.Y, point.X] = Square.Miss;
+                    message = "MISS!!!";
+                    break;
+                case Square.Miss:
+                    message = "You already missed here";
+                    break;
+                case Square.Hit:
+                    message = "This spot was hit already";
+                    break;
             }
             guessCount++;
+            Console.WriteLine($"\n{message}\n");
             return TheBoard;
         }
 
-        //public Square[,] displayPlayerGuesses(int x, int y)
-        //{
-        //    if (TheBoard[x, y] == Square.Hit)
-        //    {
-        //        TheBoard[x, y] = Square.Hit;
-        //    }
-        //    else
-        //    {
-        //        TheBoard[x, y] = Square.Miss;
-        //    }
-        //    return TheBoard;
-        //}
-        //public static Square[,] DisplayBoard(Square[,] TheBoard)
-        //{
-        //    for (int x = 0; x < TheBoard.GetLength(0); x++)
-        //    {
-        //        for (int y = 0; y < TheBoard.GetLength(1); y++)
-        //        {
-        //            Console.Write(TheBoard[x,y] + "\t");
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //    return TheBoard;
-        //}
-        public static Square[,] ClearBoard(Square[,] TheBoard)
+        public Square[,] DisplayBoard()
+        {
+            for (int x = 0; x < TheBoard.GetLength(0); x++)
+            {
+                for (int y = 0; y < TheBoard.GetLength(1); y++)
+                {
+                    Console.Write(mapSymbols[TheBoard[x, y]] + " ");
+                }
+                Console.WriteLine();
+            }
+            return TheBoard;
+        }
+
+        public Square[,] ClearBoard()
         {
             for (int x = 0; x < TheBoard.GetLength(0); x++)
             {
@@ -80,11 +77,10 @@ namespace ConsoleBattle
             }
             return TheBoard;
         }
+
         public Ship PlaceShip(Ship ship, Point loc, Orientation direction)
         {
-            loc = new Point(loc.X, loc.Y);
-
-            if (direction == Orientation.Up)
+            if (direction == Orientation.Vertical)
             {
                 if(loc.Y <= 4)
                 {
@@ -98,40 +94,6 @@ namespace ConsoleBattle
                     for (int i = loc.Y; i > loc.Y - 5; i--)
                     {
                         TheBoard[loc.X, i] = Square.Ship;
-                    }
-                }               
-            }
-            else if (direction == Orientation.Down)
-            {
-                if(loc.Y <= 4)
-                {
-                    for (int i = loc.Y; i < loc.Y + 5; i++)
-                    {
-                        TheBoard[loc.X, i] = Square.Ship;
-                    }
-                }
-                else 
-                {
-                    for (int i = loc.Y; i > loc.Y - 5; i--)
-                    {
-                        TheBoard[loc.X, i] = Square.Ship;
-                    }
-                }                
-            }
-            else if (direction == Orientation.Left)
-            {
-                if(loc.X <= 4)
-                {
-                    for (int i = loc.X; i < loc.X + 5; i++)
-                    {
-                        TheBoard[i, loc.Y] = Square.Ship;
-                    }
-                }
-                else
-                {
-                    for (int i = loc.X; i > loc.X - 5; i--)
-                    {
-                        TheBoard[i, loc.Y] = Square.Ship;
                     }
                 }               
             }
@@ -154,5 +116,24 @@ namespace ConsoleBattle
             }
             return ship;
         }
+
+        public bool GameIsOver(int hitsToWin)
+        {
+            if (guessCount >= numberOfGuesses && hitCounter < hitsToWin)
+            {
+                Console.WriteLine("\nYou ran out of guesses!");
+                return true;
+            }
+            else if (hitCounter >= hitsToWin)
+            {
+                Console.WriteLine("\nYou sunk the ship!");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
+

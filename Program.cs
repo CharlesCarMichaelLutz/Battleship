@@ -1,106 +1,104 @@
 ﻿using System.Drawing;
+
 namespace ConsoleBattle
 {
     public class Program
     {
+        public static readonly int numberOfGuesses = 15;
+
+        private static int hitsToWin = 0;       
+
         public static void Main(string[] args)
         {
             while (true)
             {
                 GameBoard player = new();
-                bool sunk = false;
-                string message;
 
                 Welcome();
-                Console.WriteLine("X: 0 - 9");
-                Console.WriteLine("Y: 0 - 9");
 
                 Random rand = new();
                 Point loc = new(rand.Next(0, 10), rand.Next(0, 10));
-
                 Orientation orient = Enum.GetValues(typeof(Orientation))
                                     .OfType<Orientation>()
-                                    .ElementAt(rand.Next(0, 4));
-               
-                player.PlaceShip(new Carrier(), loc, orient);
+                                    .ElementAt(rand.Next(0, 2));
 
-            while (!sunk)
-            {
-                    try
-                    {
-                        Console.WriteLine("\nEnter your guess: X, Y");
-                        string guess = Console.ReadLine();
-                        int xPos = Convert.ToInt32(guess.Split(',')[0]);
-                        int yPos = Convert.ToInt32(guess.Split(',')[1]);
+                Ship shipToAdd = new Carrier();   
+                player.PlaceShip(shipToAdd, loc, orient);
+                hitsToWin += shipToAdd.Length;
 
-                        if (xPos > 9 || yPos > 9)
-                        {
-                            Console.WriteLine(message = "\nYou are off the board, try again!");
-                        }
-
-                        player.CheckGuess(xPos, yPos);
-
-                        if (player.hitCounter < 5 && player.guessCount <= 14)
-                        {
-                            continue;
-                        }
-                        else if (player.guessCount > 14 && player.hitCounter < 5)
-                        {
-                            Console.WriteLine(message = "\nYou ran out of guesses!");
-                            sunk = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine(message = "\nYou sunk the ship!");
-                            sunk = true;
-                        }
-                    }
-                    catch
-                    {
-                        Console.WriteLine(message = "\nUnable to process coordinates");
-                    }
-            }
+                while (!player.GameIsOver(hitsToWin))
+                {
+                    Point guess = GetGuess();
+                    player.CheckGuess(guess);
+                    player.DisplayBoard();
+                }
 
                 Console.WriteLine("\nWant to play again? [Y or N]");
                 string answer = Console.ReadLine().ToUpper();
-                GameBoard.ClearBoard(player.TheBoard);
-                
                 if (answer == "Y")
                 {
-                    continue;
-                }
-                else if (answer == "N")
-                {
-                    return;
+                    player.ClearBoard();
                 }
                 else
                 {
                     return;
                 }
             }   
-        
         }
+
         private static void Welcome()
         {
             Console.WriteLine("Welcome to Console Battle!");
-            Console.WriteLine("\nEnter username: ");
-            string username = Console.ReadLine();
+            string username = "";
+            while (username == "")
+            {
+                Console.WriteLine("\nEnter username: ");
+                username = Console.ReadLine();
+            }
             Console.WriteLine($"\nLet's begin {username} press Enter!");
             Console.ReadLine();
+            Console.WriteLine("X: 0 - 9");
+            Console.WriteLine("Y: 0 - 9");
+        }
+
+        private static Point GetGuess()
+        {
+            bool isValidInput = false;
+            int xPos = 0;
+            int yPos = 0;
+
+            while (!isValidInput)
+            {
+                Console.WriteLine("\nEnter your guess: X, Y");
+                string guess = Console.ReadLine();
+                xPos = Convert.ToInt32(guess.Split(',')[0]);
+                yPos = Convert.ToInt32(guess.Split(',')[1]);
+
+                if (xPos > 9 || yPos > 9 || xPos < 0 || yPos < 0)
+                {
+                    Console.WriteLine("\nYou are off the board, try again!");
+                }
+                else
+                {
+                    isValidInput = true;
+                }
+            }
+            return new Point(xPos, yPos);
         }
     }
+
     public enum Orientation
     {
-        Up = 1,
-        Down = 2,
-        Left = 4,
-        Right = 8,
+        Vertical,
+        Horizontal
     }
+
     public abstract class Ship
     {
         public abstract string Name { get; }
         public abstract int Length { get; }
     }
+
     public class Carrier : Ship
     {
         public override string Name { get => "Carrier"; }
