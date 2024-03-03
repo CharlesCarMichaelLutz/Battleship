@@ -3,12 +3,12 @@
 An initial dive into developing an application completely in the console with C#.
 
 
-#### check it out [here]()
+#### check it out [here](https://replit.com/@superbengineer2/Battleship)
 
 
----
-![console battle example](https://user-images.githubusercontent.com/103493003/226859146-dc5401dc-c90a-4a72-aa3c-b26d44e40ede.JPG)
+----------
 
+![Console Battle](https://github.com/Charles-CarM/Battleship/assets/103493003/ce3e246f-ae30-4555-85cf-92a79599b816)
 
 
 ## Summary
