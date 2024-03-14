@@ -25,5 +25,15 @@ its course smoothly. Secondly randomly placing the ship on the board
 was challenging as it's a bounded area. Overall I really enjoyed
 building the application and growing my skill as a developer.
 
+## Installation
+
+1. Click on "check it out here" link in description above.
+2. Click on green button Fork & Run.
+3. Sign up for a replit account or login.
+4. Name the Repl and enter description (optional).
+5. Click blue button Fork Repl in bottom right of popup modal.
+6. Click green play button Run.
+7. Enter username to begin playing.
+
 ### Author
 * __Charles Lutz__ - *Full-Stack Software Developer* - [Personal Website](https://master--resplendent-cocada-4ee40d.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/CharlesCarMichaelLutz)
