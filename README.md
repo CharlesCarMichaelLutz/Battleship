@@ -3,9 +3,6 @@
 An initial dive into developing an application completely in the console with C#.
 
 
-#### check it out [here](https://replit.com/@superbengineer2/Battleship)
-
-
 ----------
 
 ![Console Battle](https://github.com/Charles-CarM/Battleship/assets/103493003/ce3e246f-ae30-4555-85cf-92a79599b816)
