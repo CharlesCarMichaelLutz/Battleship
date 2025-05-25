@@ -33,4 +33,4 @@ building the application and growing my skill as a developer.
 7. Enter username to begin playing.
 
 ### Author
-* __Charles Lutz__ - *Full-Stack Software Developer* - [Personal Website](https://master--resplendent-cocada-4ee40d.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/CharlesCarMichaelLutz)
+* __Charles Lutz__ - *Full-Stack Software Developer* - [Personal Website](https://charlescarmichaellutz.github.io/) | [LinkedIn](https://www.linkedin.com/in/CharlesCarMichaelLutz)
